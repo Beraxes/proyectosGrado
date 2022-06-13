@@ -20,7 +20,7 @@ public class ProyectosGrado {
         fin = null;
     }
 
-    public void montarLista() {
+    public void montarProyectos() {
         int cod;
         String titu, aut, fecha;
         cod = 0;
