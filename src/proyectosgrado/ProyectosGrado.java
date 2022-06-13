@@ -4,7 +4,7 @@
  */
 package proyectosgrado;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -20,39 +20,72 @@ public class ProyectosGrado {
         fin = null;
     }
 
-    public void montarProyectos() {
-        int cod;
-        String titu, aut, fecha;
-        cod = 0;
-        titu = JOptionPane.showInputDialog("Ingrese El Titulo Del Proyecto: ");
+    public void montarProyectos() { //con este metodo pido los datos que se guardaran en el proyecto a registrar
+        int fecha;
+        String titu, aut;        
+        titu = JOptionPane.showInputDialog("Ingrese El Titulo Del Proyecto: ");//en cada optionpane se pide un dato
         aut = JOptionPane.showInputDialog("Ingrese Los autores: ");
-        fecha = JOptionPane.showInputDialog("Ingrese la fecha de proyecto: ");
+        fecha = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la fecha de proyecto: "));
         if (inicio == null) {
             inicio = new proyecto();
-            inicio.registrarProyecto(cod + 1, titu, aut, fecha);
+            inicio.registrarProyecto(1, titu, aut, fecha);
             fin = inicio;
         } else {
             proyecto temp;
             temp = new proyecto();
-            if (contarProyectos()< 100) {
-                temp.registrarProyecto(contarProyectos() + 1, titu, aut, fecha);
-            }else{
-                JOptionPane.showMessageDialog(null,"se ha excedido el numero de proyectos que se pueden registrar");
+            if (codigoProyecto() < 100) {
+                temp.registrarProyecto(codigoProyecto() + 1, titu, aut, fecha);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pueden registrar mas proyectos");
             }
+            fin.setEnlace(temp);
+            fin = temp;
         }
     }
 
-    public int contarProyectos() {
+    public int codigoProyecto() {// con este metodo cuento los proyectos
         proyecto temp;
         temp = inicio;
-        int contador = 0;
+        int codigoP = 0;
         while (temp != null) {
-            contador++;
+            codigoP = temp.getCodigo();
             temp = temp.getEnlace();
         }
-        return contador;
+        return codigoP;
     }
 
+    public void eliminarMayoresA20Años() {// este metodo elimina los proyectos que sean mayores a 20 años
+        proyecto temp = inicio, ant = null;
+        while (temp != null) {
+            if (2022 - temp.getFechaRegistro() > 20) {
+                if (temp == inicio) {
+                    if (temp == fin) {
+                        inicio = null;
+                        fin = null;
+                        temp = null;
+                    } else {
+                        ant = temp;
+                        inicio = inicio.getEnlace();
+                        temp = temp.getEnlace();
+                        ant.setEnlace(null);
+                    }
+                } else if (temp == fin) {
+                    fin = ant;
+                    fin.setEnlace(null);
+                    temp = null;
+                } else {
+                    ant.setEnlace(temp.getEnlace());
+                    temp.setEnlace(null);
+                    temp = ant.getEnlace();
+                }
+            } else {
+                ant = temp;
+                temp = temp.getEnlace();
+            }
+
+        }
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
     }

@@ -13,14 +13,14 @@ public class proyecto {
     private int codigo;
     private String titulo;
     private String autores;
-    private String fechaRegistro;
+    private int fechaRegistro;
     public proyecto enlace;
 
     public proyecto() {
         codigo = 0;
         titulo = "";
         autores = "";
-        fechaRegistro = "";
+        fechaRegistro = 0;
         enlace = null;
     }
 
@@ -48,11 +48,11 @@ public class proyecto {
         this.autores = autores;
     }
 
-    public String getFechaRegistro() {
+    public int getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(String fechaRegistro) {
+    public void setFechaRegistro(int fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
@@ -64,7 +64,7 @@ public class proyecto {
         this.enlace = enlace;
     }
 
-    public void registrarProyecto(int cod, String tit, String aut, String fechaR) {
+    public void registrarProyecto(int cod, String tit, String aut, int fechaR) {
         setCodigo(cod);
         setTitulo(tit);
         setAutores(aut);
