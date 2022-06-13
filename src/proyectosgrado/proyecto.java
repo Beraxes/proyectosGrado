@@ -63,5 +63,19 @@ public class proyecto {
         this.enlace = enlace;
     }
     
+    public void registrarProyecto(int cod, String tit, String aut, String fechaR){
+        setCodigo(cod);
+        setTitulo(tit);
+        setAutores(aut);
+        setFechaRegistro(fechaR);
+        
+    }
+    
+    public void mostrarDatos(){
+        System.out.println(getCodigo());
+        System.out.println(getTitulo());
+        System.out.println(getAutores());
+        System.out.println(getFechaRegistro());
+    }
     
 }
