@@ -9,13 +9,14 @@ package proyectosgrado;
  * @author beraxes
  */
 public class proyecto {
+
     private int codigo;
     private String titulo;
     private String autores;
     private String fechaRegistro;
     public proyecto enlace;
-    
-    public proyecto(){
+
+    public proyecto() {
         codigo = 0;
         titulo = "";
         autores = "";
@@ -62,20 +63,20 @@ public class proyecto {
     public void setEnlace(proyecto enlace) {
         this.enlace = enlace;
     }
-    
-    public void registrarProyecto(int cod, String tit, String aut, String fechaR){
+
+    public void registrarProyecto(int cod, String tit, String aut, String fechaR) {
         setCodigo(cod);
         setTitulo(tit);
         setAutores(aut);
         setFechaRegistro(fechaR);
-        
+
     }
-    
-    public void mostrarDatos(){
+
+    public void mostrarDatos() {
         System.out.println(getCodigo());
         System.out.println(getTitulo());
         System.out.println(getAutores());
         System.out.println(getFechaRegistro());
     }
-    
+
 }
