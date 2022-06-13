@@ -77,6 +77,7 @@ public class proyecto {
         System.out.println(getTitulo());
         System.out.println(getAutores());
         System.out.println(getFechaRegistro());
+        System.out.println("___________________________");
     }
 
 }

@@ -4,6 +4,7 @@
  */
 package proyectosgrado;
 
+import java.net.ContentHandlerFactory;
 import javax.swing.*;
 
 /**
@@ -22,7 +23,7 @@ public class ProyectosGrado {
 
     public void montarProyectos() { //con este metodo pido los datos que se guardaran en el proyecto a registrar
         int fecha;
-        String titu, aut;        
+        String titu, aut;
         titu = JOptionPane.showInputDialog("Ingrese El Titulo Del Proyecto: ");//en cada optionpane se pide un dato
         aut = JOptionPane.showInputDialog("Ingrese Los autores: ");
         fecha = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la fecha de proyecto: "));
@@ -85,9 +86,69 @@ public class ProyectosGrado {
 
         }
     }
-    
+
+    public int contar() {
+        proyecto temp;
+        temp = inicio;
+        int contador = 0;
+        while (temp != null) {
+            contador++;
+            temp = temp.getEnlace();
+        }
+        return contador;
+    }
+
+    public void consultarDatos() {
+        int co = 0;
+        proyecto temp;
+        temp = inicio;
+        co = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Codigo del Proyecto a buscar"));
+        while (temp != null) {
+            if (temp.getCodigo() != co) {
+                temp = temp.getEnlace();
+            } else if (temp.getCodigo() == co) {
+                temp.mostrarDatos();
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "El Proyecto Con codigo " + co + "no se encontro");
+                break;
+            }
+
+        }
+    }
+
+    public void mostrarLista() {
+        proyecto temp;
+        temp = inicio;
+        while (temp != null) {
+            temp.mostrarDatos();
+            temp = temp.getEnlace();
+
+        }
+    }
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        int opcion;
+        ProyectosGrado objetoListaProyecto;
+        objetoListaProyecto = new ProyectosGrado();
+        opcion = Integer.parseInt(JOptionPane.showInputDialog("Opcion 1. Crear O anexar Proyecto \n Opcion 2 Listar Proyectos \n Opcion 3 Eliminar Proyectos Mayores a 20 Años \n Opcion 4 Buscar Proyecto Por Codigo \n Opcion 5 Salir"));
+        do {
+            if (opcion == 1) {
+                objetoListaProyecto.montarProyectos();
+
+            } else if (opcion == 2) {
+                objetoListaProyecto.mostrarLista();
+
+            } else if (opcion == 3) {
+                objetoListaProyecto.eliminarMayoresA20Años();
+            } else if (opcion == 4) {
+                objetoListaProyecto.consultarDatos();
+            } else {
+                System.exit(0);
+            }
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("Opcion 1. Crear O anexar Proyecto \n Opcion 2 Listar Proyectos \n Opcion 3 Eliminar Proyectos Mayores a 20 Años \n Opcion 4 Buscar Proyecto Por Codigo"));
+
+        } while (opcion < 5);
     }
 
 }
