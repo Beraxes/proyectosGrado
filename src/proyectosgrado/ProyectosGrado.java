@@ -4,7 +4,6 @@
  */
 package proyectosgrado;
 
-import java.net.ContentHandlerFactory;
 import javax.swing.*;
 
 /**

@@ -4,6 +4,8 @@
  */
 package proyectosgrado;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author beraxes
