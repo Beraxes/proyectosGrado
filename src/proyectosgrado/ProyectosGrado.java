@@ -115,6 +115,12 @@ public class ProyectosGrado {
 
         }
     }
+    
+    public int aleatorio(){
+        int min =1,max = 100;       
+        int Aleatiorio = (int)Math.floor(Math.random()*(max-min+1)+min);
+        return Aleatiorio;
+    }
 
     public void mostrarLista() {
         proyecto temp;
